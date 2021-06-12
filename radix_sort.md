@@ -41,5 +41,5 @@ for (int i = 0; i < N; i++)
 for (int i = 0; i < N; i++)
 	a[i] = aux[i];
 ```
-[indexCount](/Users/junhpark/Desktop/Screen Shot 2021-06-12 at 4.49.49 PM.png)
+![indexCount](/Users/junhpark/Desktop/indexCount.png)
 
