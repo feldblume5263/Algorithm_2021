@@ -14,7 +14,32 @@ string은 문자들의 나열이다. null로 종료된다.<br>
 length로 처리한 string 자료형이다.<br>
 <br>
 <br>
-# Radix = 기수 (root(base))
+### Radix = 기수 (root(base))
 
 
+
+
+N개의 정수(0 ~ R - 1)를 가진 배열 a[]를 정렬해보자.
+<br>
+<br>
+
+### Key 인덱스 카운트
+
+```
+int	N = a.length;
+int	count[] = new int[R + 1];
+
+for (int i = 0; i < N; i++)
+	count[a[i] + 1]++;
+
+for (int r = 0; r < R; R++)
+	count[r + 1] += count[r];
+
+for (int i = 0; i < N; i++)
+	aux[count[a[i]]++] = a[i];
+
+for (int i = 0; i < N; i++)
+	a[i] = aux[i];
+```
+[indexCount](/Users/junhpark/Desktop/Screen Shot 2021-06-12 at 4.49.49 PM.png])
 
