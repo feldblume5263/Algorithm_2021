@@ -41,4 +41,5 @@ for (int i = 0; i < N; i++)
 for (int i = 0; i < N; i++)
 	a[i] = aux[i];
 ```
+
 ![1](https://user-images.githubusercontent.com/53016167/121769649-c5944800-cb9f-11eb-9af6-236a779f039f.png)

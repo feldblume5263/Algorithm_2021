@@ -6,18 +6,15 @@ using namespace std;
 
 class						Tree
 {
-	int						TreeSize;
+	int					TreeSize;
 	list<int>				*Nodes; // 노드의 인덱스
 	list<int>				*contents; // 노드의 콘텐츠, 인덱스 마다 1대1 대응이 된다.
 
 public:
 
 	Tree(int InputSize);
-	int						setContent(int node, int content);
-	int						setEdge(int parent, int child);
-	// DFS
-	void					DFS();
-	void					DFSTraversal(int idx, bool *visited);
+	int					setContent(int node, int content);
+	int					setEdge(int parent, int child);
 	//BFS
 	void					BFS();
 	void					BFSTraversal(list<int> queue, bool *isVisited);
@@ -36,7 +33,7 @@ Tree::Tree(int InputSize)
 /*
 **							Node의 Content 추가
 */
-int							Tree::setContent(int node, int content)
+int						Tree::setContent(int node, int content)
 {
 	if (contents[node].size() != 0)
 	{
@@ -50,7 +47,7 @@ int							Tree::setContent(int node, int content)
 /*
 **							Node의 Link 추가
 */
-int							Tree::setEdge(int parent, int child)
+int						Tree::setEdge(int parent, int child)
 {
 	Nodes[parent].push_back(child);
 	return (1);
@@ -63,7 +60,7 @@ void						Tree::BFS()
 {
 	list<int>				queue;
 	bool					*isVisited;
-	int						temp;
+	int					temp;
 
 	isVisited = new bool[TreeSize];
 	for (int idx = 0; idx < TreeSize; idx++)
@@ -76,7 +73,7 @@ void						Tree::BFS()
 void						Tree::BFSTraversal(list<int> queue, bool *isVisited)
 {
 	list<int>::iterator		iter;
-	int						this_idx;
+	int					this_idx;
 
 	isVisited[0] = true;
 	queue.push_back(0);
@@ -97,37 +94,6 @@ void						Tree::BFSTraversal(list<int> queue, bool *isVisited)
 	}
 }
 
-
-/*
-**							DFS 순회
-*/
-void						Tree::DFS()
-{
-	bool					*isVisited;
-
-	isVisited = new bool[TreeSize];
-	for (int i = 0; i < TreeSize; i++)
-	{
-		isVisited[i] = false;
-	}
-	DFSTraversal(0, isVisited);
-	cout << endl;
-}
-
-void						Tree::DFSTraversal(int idx, bool *isVisited)
-{
-	list<int>::iterator		iter;
-
-	isVisited[idx] = true;
-	cout << "Node : [" << idx << "] " << "Content: " << contents[idx].front() << endl << endl;
-
-	for (iter = Nodes[idx].begin(); iter != Nodes[idx].end(); ++iter)
-	{
-		if (!isVisited[*iter])
-			DFSTraversal(*iter, isVisited);
-	}
-}
-
 /*
 **								실행(실행할 때 매개변수로 전체 사이즈를 넣어야 함.)
 */
@@ -135,9 +101,9 @@ void							start(int size)
 {
 	// 개수만큼 동적할당
 	Tree						tree(size);
-	int							temp;
-	int							parent;
-	int							child;
+	int						temp;
+	int						parent;
+	int						child;
 
 	// 각각의 노드에 들어가는 값을 할당
 	cout << "----------------------------------------------------" << endl;
@@ -189,17 +155,12 @@ void							start(int size)
 	tree.BFS();
 	cout << endl;
 	cout << "----------------------------------------------------" << endl;
-	cout << endl;
-	// DFS 실행
-	cout << "[DFS Traversal]" << endl << endl;
-	tree.DFS();
-	cout << endl;
-	cout << "----------------------------------------------------" << endl;
 }
 
 int								main(int argc, char **argv)
 {
-	int							size;
+	int						size;
+
 	if (argc != 2)
 	{
 		cout << "ARG ERROR" << endl;
